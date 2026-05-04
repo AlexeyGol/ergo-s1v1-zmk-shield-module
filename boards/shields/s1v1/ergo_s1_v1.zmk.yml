@@ -1,0 +1,11 @@
+file_format: "1"
+id: ergo_s1_v1
+name: Ergo S1 V1
+type: shield
+url: https://github.com/wizarddata/Ergo-S-1
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - ergo_s1_v1_left
+  - ergo_s1_v1_right
