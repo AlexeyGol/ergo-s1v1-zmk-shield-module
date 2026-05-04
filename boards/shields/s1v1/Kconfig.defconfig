@@ -1,0 +1,24 @@
+# Copyright (c) 2021 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+if SHIELD_ERGO_S1_V1_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Ergo s1v1"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_USB
+    default y
+
+endif
+
+if SHIELD_ERGO_S1_V1_LEFT || SHIELD_ERGO_S1_V1_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_BLE
+    default y
+
+endif
