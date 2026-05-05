@@ -6,50 +6,29 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
-#define BASE 0
-#define NAV  1
-#define FN   2
-#define SYS  3
+#define DEFAULT 0
+#define FN  1
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        base {
-            display-name = "BASE";
-// |   `   |   1   |   2   |   4   |   5   |   6   |                                  |   6   |   7   |   8   |   9   |   0   |  BSPC |  
-// |  TAB  |   Q   |   W   |   E   |   R   |   T   |                                  |   Y   |   U   |   I   |   O   |   P   |  SW07 |
-// |  ESC  |   A   |   S   |   D   |   F   |   G   |                                  |   H   |   J   |   K   |   L   |   ;   |  '    |
-// | LCTL  |   Z   |   X   |   C   |   V   |   B   |                                  |   N   |   M   |   ,   |   .   |   /   |  SW19 | 
-//         | SW25  | LEFT  | RIGHT |                                                                  | SW27  |  SW26 | SW25  | 
-//                                                 | WTERM |  PTSC |    | SW29 | SW28 |
-//                                                         |  SW30 |    | SW30 |
-//                                  | SW31 | SPACE | SW33  |  SW34 |    | SW34 | SW33 | SPACE | SW31 |
+        default_layer {
+            // ---------------------------------------------------------------------------------------------------------------------------------
+            // | ESC  |  1   |  2   |  3   |  4   |  5   |                                                   |  6   |  7   |  8   |  9   |  0   | BSPC |
+            // | WIN  |  Q   |  W   |  E   |  R   |  T   |                                                   |  Y   |  U   |  I   |  O   |  P   | EQL  |
+            // | TAB  |  A   |  S   |  D   |  F   |  G   |                                                   |  H   |  J   |  K   |  L   | SCLN | QUOT |
+            // | LCTL |  Z   |  X   |  C   |  V   |  B   |      | CTL  | ALT  |         | CAPS | CTL  |      |  N   |  M   | COMM | DOT  | SLSH | MINS |
+            //        | GRV  | BSLS | LEFT | RGHT |      | SHFT |  FN  | HOME |         | PGUP | ENT  | SPC  |      |  UP  |  DN  | LBKT | RBKT |
+            //                                                         | END  |         | PGDN |
 
             bindings = <
-&kp GRAVE    &kp N1     &kp N2    &kp N3    &kp N4     &kp N5                                                                                 &kp N6  &kp N7  &kp N8     &kp N9      &kp N0     &kp MINUS
-&kp TAB      &kp Q      &kp W     &kp E     &kp R      &kp T                                                                                  &kp Y   &kp U   &kp I      &kp O       &kp P      &kp BACKSLASH
-&kp ESCAPE   &kp A      &kp S     &kp D     &kp F      &kp G                                                                                  &kp H   &kp J   &kp K      &kp L       &kp SEMI   &kp SQT
-&kp LCTRL    &kp Z      &kp X     &kp C     &kp V      &kp B                  &kp LCTRL  &kp LEFT_WIN    &kp RIGHT_ALT  &kp RCTRL             &kp N   &kp M   &kp COMMA  &kp PERIOD  &kp SLASH  &kp RIGHT_SHIFT
-             &kp DELETE &kp LEFT  &kp RIGHT          
-                                                        
-             
-             
-             
-             
-             
-             &kp BACKSPACE  &mo 1      &kp HOME        &kp PG_UP      &kp ENTER  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT    &kp RBKT
+&kp EQUAL       &kp N1     &kp N2      &kp N3    &kp N4     &kp N5                                                                                 &kp N6  &kp N7  &kp N8     &kp N9      &kp N0     &kp MINUS
+&kp TAB         &kp Q      &kp W       &kp E     &kp R      &kp T                                                                                  &kp Y   &kp U   &kp I      &kp O       &kp P      &kp BACKSLASH
+&kp ESCAPE      &kp A      &kp S       &kp D     &kp F      &kp G                                                                                  &kp H   &kp J   &kp K      &kp L       &kp SEMI   &kp SQT
+&kp LEFT_SHIFT  &kp Z      &kp X       &kp C     &kp V      &kp B                  &kp LCTRL  &kp LEFT_WIN    &kp RIGHT_ALT  &kp RCTRL             &kp N   &kp M   &kp COMMA  &kp PERIOD  &kp SLASH  &kp RIGHT_SHIFT
+                &kp GRAVE  &kp DELETE  &kp LEFT  &kp RIGHT          &kp BACKSPACE  &mo 1      &kp HOME        &kp PG_UP      &kp ENTER  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT    &kp RBKT
                                                                                               &kp END         &kp PG_DN
             >;
         };
