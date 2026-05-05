@@ -7,6 +7,7 @@ module doc https://zmk.dev/docs/development/hardware-integration/new-shield?keyb
 - Use - You switch between paired devices using &bt BT_SEL 0, &bt BT_SEL 1
 - add Microcontroller wiring
 
+
 # dtsi transform draft
 
 // | SW01 | SW02 | SW03 | SW04 | SW05 | SW06 |  
