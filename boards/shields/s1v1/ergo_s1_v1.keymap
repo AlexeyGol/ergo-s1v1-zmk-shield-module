@@ -42,10 +42,10 @@
 &kp TAB      &kp Q      &kp W     &kp E     &kp R      &kp T                              &kp Y     &kp U   &kp I      &kp O       &kp P      &kp BACKSLASH
 &kp ESCAPE   &kp A      &kp S     &kp D     &kp F      &kp G                              &kp H     &kp J   &kp K      &kp L       &kp SEMI   &kp SQT
 &kp LCTRL    &kp Z      &kp X     &kp C     &kp V      &kp B                              &kp N     &kp M   &kp COMMA  &kp PERIOD  &kp SLASH  &kp RIGHT_SHIFT
-             &kp DELETE &kp LEFT  &kp RIGHT                                                                 &kp A      &kp A       &kp A       
-                                                       &kp A   &kp A      &kp A   &kp A
-                                                               &kp A      &bootloader
-                                  &kp A     &kp SPACE  &kp A   &kp A      &kp A   &kp A   &kp SPACE &kp BACKSPACE         
+             &bootloader &kp LEFT  &kp RIGHT                                                                 &kp A      &kp A       &kp A       
+                                                       &kp H   &kp J      &kp A   &kp A
+                                                               &kp K      &bootloader
+                                  &kp O     &kp SPACE  &kp P   &kp L      &kp A   &kp A   &kp SPACE &kp BACKSPACE         
             >;
         };
 
