@@ -37,21 +37,15 @@
 //                                                         |  SW30 |    | SW30 |
 //                                  | SW31 | SPACE | SW33  |  SW34 |    | SW34 | SW33 | SPACE | SW31 |
 
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // | ESC  |  1   |  2   |  3   |  4   |  5   |                                                   |  6   |  7   |  8   |  9   |  0   | BSPC |
-            // | WIN  |  Q   |  W   |  E   |  R   |  T   |                                                   |  Y   |  U   |  I   |  O   |  P   | EQL  |
-            // | TAB  |  A   |  S   |  D   |  F   |  G   |                                                   |  H   |  J   |  K   |  L   | SCLN | QUOT |
-            // | LCTL |  Z   |  X   |  C   |  V   |  B   |      | CTL  | ALT  |         | CAPS | CTL  |      |  N   |  M   | COMM | DOT  | SLSH | MINS |
-            //        | GRV  | BSLS | LEFT | RGHT |      | SHFT |  FN  | HOME |         | PGUP | ENT  | SPC  |      |  UP  |  DN  | LBKT | RBKT |
-            //                                                         | END  |         | PGDN |
-
             bindings = <
-&kp EQUAL       &kp N1     &kp N2      &kp N3    &kp N4     &kp N5                                                                                 &kp N6  &kp N7  &kp N8     &kp N9      &kp N0     &kp MINUS
-&kp TAB         &kp Q      &kp W       &kp E     &kp R      &kp T                                                                                  &kp Y   &kp U   &kp I      &kp O       &kp P      &kp BACKSLASH
-&kp ESCAPE      &kp A      &kp S       &kp D     &kp F      &kp G                                                                                  &kp H   &kp J   &kp K      &kp L       &kp SEMI   &kp SQT
-&kp LEFT_SHIFT  &kp Z      &kp X       &kp C     &kp V      &kp B                  &kp LCTRL  &kp LEFT_WIN    &kp RIGHT_ALT  &kp RCTRL             &kp N   &kp M   &kp COMMA  &kp PERIOD  &kp SLASH  &kp RIGHT_SHIFT
-                &kp GRAVE  &kp DELETE  &kp LEFT  &kp RIGHT          &kp BACKSPACE  &mo 1      &kp HOME        &kp PG_UP      &kp ENTER  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT    &kp RBKT
-                                                                                              &kp END         &kp PG_DN
+&kp GRAVE    &kp N1     &kp N2    &kp N3    &kp N4     &kp N5                             &kp N6    &kp N7  &kp N8     &kp N9      &kp N0     &kp MINUS
+&kp TAB      &kp Q      &kp W     &kp E     &kp R      &kp T                              &kp Y     &kp U   &kp I      &kp O       &kp P      &kp BACKSLASH
+&kp ESCAPE   &kp A      &kp S     &kp D     &kp F      &kp G                              &kp H     &kp J   &kp K      &kp L       &kp SEMI   &kp SQT
+&kp LCTRL    &kp Z      &kp X     &kp C     &kp V      &kp B                              &kp N     &kp M   &kp COMMA  &kp PERIOD  &kp SLASH  &kp RIGHT_SHIFT
+             &kp DELETE &kp LEFT  &kp RIGHT                                                                 &kp A      &kp A       &kp A       
+                                                       &kp A   &kp A      &kp A   &kp A
+                                                               &kp A      &bootloader
+                                  &kp A     &kp SPACE  &kp A   &kp A      &kp A   &kp A   &kp SPACE &kp BACKSPACE         
             >;
         };
 
