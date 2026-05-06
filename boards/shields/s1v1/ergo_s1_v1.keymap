@@ -43,9 +43,9 @@
 &kp ESCAPE   &kp A      &kp S     &kp D     &kp F      &kp G                              &kp H     &kp J   &kp K      &kp L       &kp SEMI   &kp SQT
 &kp LCTRL    &kp Z      &kp X     &kp C     &kp V      &kp B                              &kp N     &kp M   &kp COMMA  &kp PERIOD  &kp SLASH  &kp RIGHT_SHIFT
              &bootloader &kp LEFT  &kp RIGHT                                                                 &kp A      &kp A       &kp A       
-                                                       &kp H   &kp J      &kp A   &kp A
-                                                               &kp K      &bootloader
-                                  &kp O     &kp SPACE  &kp P   &kp L      &kp A   &kp A   &kp SPACE &kp BACKSPACE         
+                                                       &kp H   &kp J      &kp N6   &kp N7
+                                                               &kp K      &kp N8
+                                  &kp O     &kp SPACE  &kp P   &kp L      &kp N9   &kp N0   &kp SPACE &kp BACKSPACE         
             >;
         };
 
