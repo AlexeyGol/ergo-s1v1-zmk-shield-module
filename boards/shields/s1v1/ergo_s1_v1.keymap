@@ -144,15 +144,15 @@
 //                                   | BSPC   | SPACE nav | SW33  |  SW34 |    | PG DOWN | ENTER | SPACE nav | DEL     |
 
             bindings = <      
- //|              |            |           |             |             |         |                |        |    |          |            |            |                 |            |          |
-    &kp GRAVE      &kp N1       &kp N2       &kp N3       &kp N4        &kp N5                                              &kp N6       &kp N7       &kp N8            &kp N9       &kp N0     &kp MINUS
-    &kp TAB        &kp Q        &kp W        &kp E        &kp R         &kp T                                               &kp Y        &kp U        &kp I             &kp O        &kp P      &kp BACKSLASH
-    &kp ESCAPE     &hml LGUI A  &hml LALT S  &hml LSHIFT D  &hml LCTRL F   &kp G                                               &hmr RCTRL H  &hmr RSHFT J  &hmr RALT K       &hmr RGUI L  &kp SEMI   &kp SQT
-    &kp LEFT_SHIFT &kp Z        &kp X        &kp C        &kp V         &kp B                                               &kp N        &kp M        &kp COMMA         &kp PERIOD   &kp SLASH  &kp RIGHT_SHIFT
-                   &kp LGUI     &kp LEFT     &kp RIGHT                                                                                   &kp HOME     &kp END           &mkp RCLK      
-                                                                                           &kp H  &kp PSCRN     &kp N6      &kp N7 
-                                                                                                  &kp K         &kp PAGE_UP 
-                                                          &kp BACKSPACE &my_lt L_NAV SPACE &kp P  &kp K_CALC    &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV SPACE  &my_lt L_NUM DEL 
+ //|              |            |           |               |                        |         |                |        |    |          |            |            |                 |            |               |
+    &kp GRAVE      &kp N1       &kp N2       &kp N3         &kp N4                   &kp N5                                              &kp N6       &kp N7       &kp N8            &kp N9       &kp N0          &kp MINUS
+    &kp TAB        &kp Q        &kp W        &kp E          &kp R                    &kp T                                               &kp Y        &kp U        &kp I             &kp O        &kp P           &kp BACKSLASH
+    &kp ESCAPE     &hml LGUI A  &hml LALT S  &hml LSHIFT D  &hml LCTRL F             &kp G                                               &kp H        &hmr RCTRL J &hmr RSHFT K      &hmr RALT L  &hmr RGUI SEMI  &kp SINGLE_QUOTE
+    &kp LEFT_SHIFT &kp Z        &kp X        &kp C          &kp V                    &kp B                                               &kp N        &kp M        &kp COMMA         &kp PERIOD   &kp SLASH       &kp RIGHT_SHIFT
+                   &kp LGUI     &kp LEFT     &kp RIGHT                                                                                                &kp HOME     &kp END           &mkp RCLK      
+                                                                                                        &kp H  &kp PSCRN     &kp N6      &kp N7 
+                                                                                                               &kp K         &kp PAGE_UP 
+                                                            &my_lt L_FKEYS BACKSPACE &my_lt L_NAV SPACE &kp P  &kp K_CALC    &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV SPACE  &my_lt L_NUM DEL 
             >;
         };
 
@@ -211,6 +211,23 @@
             >;
         };
 
+
+// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+        template {
+            display-name = "L_FKEYS";
+            bindings = <
+ //|       |       |       |       |       |       |       |      | |       |       |       |       |       |       |       |       |
+    &trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &kp F7  &kp F8  &kp F9  &kp F10  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans
+    &trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &kp F1  &kp F2  &kp F3  &kp F12  &trans
+            &trans  &trans  &trans                                                                   &trans  &trans  &trans
+                                                    &trans  &trans                   &trans  &trans
+                                                            &trans                   &trans
+                                    &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans                                                                
+            >;
+        };
+
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
         template {
             display-name = "template";
@@ -226,5 +243,6 @@
                                     &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans                                                                
             >;
         };
+
     };
 };
