@@ -16,10 +16,11 @@
 
 
 // use &mo 1 for nav layer
-#define L_BASE 0 
-#define L_NAV  1
-#define L_NUM  2
-#define L_SYS  3
+#define L_BASE   0 
+#define L_NAV    1
+#define L_NUM    2
+#define L_SYS    3
+#define L_FKEYS  4
 
 
 / {
