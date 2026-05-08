@@ -1,0 +1,36 @@
+// BT profile selector with hold-to-disconnect.
+// Tap   = force OUT_BLE + select profile N
+// Hold ≥3s = disconnect profile N (bond preserved)
+// usage - &bt_ht 0 0    &bt_ht 1 1 etc
+
+/ {
+    behaviors {
+        bt_ht: bt_ht {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <3000>;
+            bindings = <&bt_disc>, <&bt_sel_ble>;
+        };
+    };
+
+    //Parametic macros
+    macros {
+        bt_sel_ble: bt_sel_ble {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&out OUT_BLE>
+                , <&macro_param_1to2>
+                , <&bt BT_SEL MACRO_PLACEHOLDER>;
+        };
+
+        bt_disc: bt_disc {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_param_1to2>
+                , <&bt BT_DISC MACRO_PLACEHOLDER>;
+        };
+    };
+};

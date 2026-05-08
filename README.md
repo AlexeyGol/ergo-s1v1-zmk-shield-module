@@ -10,6 +10,9 @@ ref https://github.com/linkarzu/zmk-keyboard-toucan/blob/main/boards/shields/tou
 klor https://github.com/GEIGEIGEIST/zmk-config-klor/blob/master/config/klor.keymap
 glove80 https://github.com/linkarzu/linkarzu-glove80/blob/main/config/glove80.keymap
 
+mouse - https://github.com/urob/zmk-config/blob/main/config/base.keymap
+
+
 
 # TODO
 - Update wiring pinout
