@@ -142,15 +142,15 @@
         navigation_layer {
             display-name = "NAV";
             bindings = <
- //|       |          |        |        |           |       |       |      | |       |       |           |           |         |         |         |       |
-    &trans  &trans     &trans   &trans   &trans      &trans                                   &trans      &trans      &trans   &trans    &trans    &trans
-    &trans  &kp PG_UP  &kp HOME &kp UP   &kp END     &trans                                   &trans      &kp HOME    &kp UP   &kp END   &kp PG_UP &trans
-    &trans  &kp PG_DN  &kp LEFT &kp DOWN &kp RIGHT   &trans                                   &trans      &kp LEFT    &kp DOWN &kp RIGHT &kp PG_DN &trans
-    &trans  &trans     &trans   &trans   &win_desk_l &win_desk_r                              &win_desk_l &win_desk_r &trans   &trans  &trans  &trans
-            &trans     &trans   &trans                                                                                &trans   &trans  &trans
-                                                                  &trans  &trans              &trans      &trans     
+ //|       |          |        |        |           |       |       |      | |       |       |             |           |         |         |         |       |
+    &trans  &trans     &trans   &trans   &trans      &trans                                   &trans        &trans      &trans   &trans    &trans    &trans
+    &trans  &kp PG_UP  &kp HOME &kp UP   &kp END     &trans                                   &kp DEL        &kp HOME    &kp UP   &kp END   &kp PG_UP &trans
+    &trans  &kp PG_DN  &kp LEFT &kp DOWN &kp RIGHT   &trans                                   &kp BACKSPACE &kp LEFT    &kp DOWN &kp RIGHT &kp PG_DN &trans
+    &trans  &trans     &trans   &trans   &win_desk_l &win_desk_r                              &win_desk_l   &win_desk_r &trans   &trans  &trans  &trans
+            &trans     &trans   &trans                                                                                  &trans   &trans  &trans
+                                                                  &trans  &trans              &trans        &trans     
                                                                           &trans              &trans         
-                                         &trans      &trans       &trans  &trans              &trans      &trans      &trans   &trans                                                                
+                                         &trans      &trans       &trans  &trans              &trans        &trans      &trans   &trans                                                                
             >; 
 
         }

@@ -1,0 +1,45 @@
+;; defsrc is still necessary
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  y u i o p
+  caps a s d f h j k l ;
+  n m spc
+)
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  ;; escctrl (tap-hold $tap-time $hold-time esc lctl)
+  lang (tap-hold 100 100 esc (multi lalt lshift)) ;; Tapping Caps now acts as Alt+Shift, hold ot esc
+  a (multi f24 (tap-hold $tap-time $hold-time a lmet))
+  s (multi f24 (tap-hold $tap-time $hold-time s lalt))
+  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l (multi f24 (tap-hold $tap-time $hold-time l ralt))
+  ; (multi f24 (tap-hold $tap-time $hold-time ; rmet))
+  spc (tap-hold $tap-time $hold-time spc (layer-while-held nav))
+  ws-prev (multi lmet lctl left)
+  ws-next (multi lmet lctl rght)
+)
+
+(deflayer base
+  y u i o p
+  @lang @a @s @d @f h @j @k @l @;
+  n m @spc
+)
+
+(deflayer nav
+  ;; y    u     i   o    p
+     del  home  up  end  pgup
+  ;; caps  a  s  d  f  h     j     k     l      ;
+     _     _  _  _  _  bspc  left  down  right  pgdn
+  ;; n          m          spc
+     @ws-prev   @ws-next   _
+)
