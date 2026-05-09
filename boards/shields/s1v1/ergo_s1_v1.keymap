@@ -21,6 +21,7 @@
 #define L_NUM    2
 #define L_SYS    3
 #define L_FKEYS  4
+#define L_TEMPLATE 5
 
 
 / {
