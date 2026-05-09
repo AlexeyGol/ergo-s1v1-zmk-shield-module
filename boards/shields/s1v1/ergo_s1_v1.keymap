@@ -21,8 +21,6 @@
 #define L_NUM    2
 #define L_SYS    3
 #define L_FKEYS  4
-#define L_TEMPLATE 5
-
 
 / {
     conditional_layers {
@@ -229,7 +227,7 @@
                                     &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans                                                                
             >;
         };
-
+#if 0
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
         template_REPLACE_ME {
             display-name = "template_REPLACE_ME";
@@ -245,6 +243,6 @@
                                     &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans                                                                
             >;
         };
-
+#endif
     };
 };
