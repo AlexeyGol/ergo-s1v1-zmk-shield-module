@@ -1,25 +1,23 @@
-/ {
-    combos {
-        compatible = "zmk,combos";
+combos {
+    compatible = "zmk,combos";
 
-        // Combo for system layer - sticky, one-shot - press combo, next key is catched as system and go back to previous layer
-        combo_system {
-            timeout-ms = <50>;
-            key-positions = <0 11>;   // top-outer corners, both halves
-            require-prior-idle-ms = <150>;
-            bindings = <&sl 3>; // L_SYS layer
-        };
+    // Combo for system layer - sticky, one-shot - press combo, next key is catched as system and go back to previous layer
+    combo_system {
+        timeout-ms = <50>;
+        key-positions = <0 11>;   // top-outer corners, both halves
+        require-prior-idle-ms = <150>;
+        bindings = <&sl 3>; // L_SYS layer
+    };
 
-        // caps locked word for constants
-        combo_caps_word {
-            key-positions = <36 47>; // left and right shifts
-            bindings = <&caps_word>;
-        };
+    // caps locked word for constants
+    combo_caps_word {
+        key-positions = <36 47>; // left and right shifts
+        bindings = <&caps_word>;
+    };
 
-        // d f to delete previous word
-        combo_delete_word {
-            key-positions = <27 28>;
-            bindings = <&kp LC(BSPC)>;
-        };
+    // d f to delete previous word
+    combo_delete_word {
+        key-positions = <27 28>;
+        bindings = <&kp LC(BSPC)>;
     };
 };

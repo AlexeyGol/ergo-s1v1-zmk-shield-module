@@ -13,7 +13,6 @@
 
 // Local files
 #include "keymap_bluetooth.dtsi"
-#include "keymap_combos.dtsi"
 
 
 // use &mo 1 for nav layer
@@ -24,6 +23,8 @@
 #define L_FKEYS  4
 
 / {
+    #include "keymap_combos.dtsi"
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
