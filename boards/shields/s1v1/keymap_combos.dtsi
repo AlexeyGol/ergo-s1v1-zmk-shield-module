@@ -15,9 +15,15 @@ combos {
         bindings = <&caps_word>;
     };
 
-    // d f to delete previous word
+    // e r to delete previous word
     combo_delete_word {
-        key-positions = <27 28>;
+        key-positions = <15 16>;
         bindings = <&kp LC(BSPC)>;
+    };
+
+    // u i for backspace
+    combo_delete_word {
+        key-positions = <19 20>;
+        bindings = <&kp BSPC>;
     };
 };
