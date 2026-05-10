@@ -22,7 +22,7 @@ combos {
     };
 
     // u i for backspace
-    combo_delete_word {
+    combo_backspace {
         key-positions = <19 20>;
         bindings = <&kp BSPC>;
     };
