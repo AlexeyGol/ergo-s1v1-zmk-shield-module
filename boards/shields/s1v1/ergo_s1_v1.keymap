@@ -144,7 +144,7 @@
                    &kp LGUI     &kp LEFT     &kp RIGHT                                                                                                &kp HOME     &kp END           &mkp RCLK      
                                                                                                         &kp LG(TAB)  &kp PSCRN     &kp N6      &kp N7 
                                                                                                                &kp K         &kp PAGE_UP 
-                                                            &my_lt L_FKEYS &kp LC(BSPC) &my_lt L_NAV BACKSPACE &kp P  &kp K_CALC    &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV SPACE  &my_lt L_NUM DEL 
+                                                            &my_lt L_FKEYS LC(BSPC) &my_lt L_NAV BACKSPACE &kp P  &kp K_CALC    &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV SPACE  &my_lt L_NUM DEL 
             >;
         };
 
