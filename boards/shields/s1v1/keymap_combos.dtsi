@@ -22,4 +22,4 @@
             bindings = <&kp LC(BSPC)>;
         };
     };
-}
+};
