@@ -20,7 +20,7 @@
 #define L_BASE   0 
 #define L_NAV    1
 #define L_NUM    2
-#define L_SYS    3
+#define L_SYS    3 // on update - update combos file too
 #define L_FKEYS  4
 
 / {
