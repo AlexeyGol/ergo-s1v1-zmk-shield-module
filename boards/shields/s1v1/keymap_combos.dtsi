@@ -29,7 +29,7 @@ combos {
 
     // m , for language change
     combo_language {
-        key-positions = <19 20>;
+        key-positions = <43 44>;
         bindings = <&kp LG(SPACE)>;
     };
 
