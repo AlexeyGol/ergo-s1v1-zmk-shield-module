@@ -15,15 +15,22 @@ combos {
         bindings = <&caps_word>;
     };
 
-    // e r to delete previous word
+    // e r for backspace
     combo_delete_word {
         key-positions = <15 16>;
-        bindings = <&kp LC(BSPC)>;
-    };
-
-    // u i for backspace
-    combo_backspace {
-        key-positions = <19 20>;
         bindings = <&kp BSPC>;
     };
+
+    // u i for delete
+    combo_backspace {
+        key-positions = <19 20>;
+        bindings = <&kp DELETE>;
+    };
+
+    // m , for language change
+    combo_backspace {
+        key-positions = <19 20>;
+        bindings = <&kp LG(SPACE)>;
+    };
+
 };
