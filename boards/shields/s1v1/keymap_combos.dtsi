@@ -6,7 +6,7 @@ combos {
         timeout-ms = <50>;
         key-positions = <0 11>;   // top-outer corners, both halves
         require-prior-idle-ms = <150>;
-        bindings = <&sl 3>; // L_SYS layer
+        bindings = <&mo 3>; // L_SYS layer
     };
 
     // caps locked word for constants
@@ -16,19 +16,19 @@ combos {
     };
 
     // e r for backspace
-    combo_delete_word {
+    combo_backspace {
         key-positions = <15 16>;
         bindings = <&kp BSPC>;
     };
 
     // u i for delete
-    combo_backspace {
+    combo_delete {
         key-positions = <19 20>;
         bindings = <&kp DELETE>;
     };
 
     // m , for language change
-    combo_backspace {
+    combo_language {
         key-positions = <19 20>;
         bindings = <&kp LG(SPACE)>;
     };
