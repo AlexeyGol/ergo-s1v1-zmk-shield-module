@@ -1,45 +1,73 @@
-;; defsrc is still necessary
 (defcfg
   process-unmapped-keys yes
+  ;; Device path for Ubuntu (verified from your system)
+  linux-dev /dev/input/event4
+  concurrent-tap-hold yes
 )
 
 (defsrc
-  y u i o p
-  caps a s d f h j k l ;
-  n m spc
+  q w e r t y u i o p
+  caps a s d f g h j k l ;
+  z x c v b n m , . /
+  spc
 )
+
 (defvar
   tap-time 150
   hold-time 200
 )
 
 (defalias
-  ;; escctrl (tap-hold $tap-time $hold-time esc lctl)
-  lang (tap-hold 100 100 esc (multi lalt lshift)) ;; Tapping Caps now acts as Alt+Shift, hold ot esc
+  ;; Language/Esc tap-hold (Tapping Caps acts as Alt+Shift, hold for Esc)
+  lang (tap-hold 100 100 esc (multi lalt lshift))
+
+  ;; Home Row Mods (Left) - Using f24 to improve compatibility
   a (multi f24 (tap-hold $tap-time $hold-time a lmet))
   s (multi f24 (tap-hold $tap-time $hold-time s lalt))
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
   f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+
+  ;; Home Row Mods (Right)
   j (multi f24 (tap-hold $tap-time $hold-time j rctl))
   k (multi f24 (tap-hold $tap-time $hold-time k rsft))
   l (multi f24 (tap-hold $tap-time $hold-time l ralt))
   ; (multi f24 (tap-hold $tap-time $hold-time ; rmet))
+
+  ;; Space -> Navigation layer on hold
   spc (tap-hold $tap-time $hold-time spc (layer-while-held nav))
+
+  ;; Navigation Macros
   ws-prev (multi lmet lctl left)
   ws-next (multi lmet lctl rght)
+  win-tab (multi lmet tab)
+  alt-tab (multi lalt tab)
+)
+
+;; ZMK-style Combos (Chords)
+(defchordsv2
+  (e r) bspc 50 all-released ()              ;; e+r for Backspace
+  (u i) del 50 all-released ()               ;; u+i for Delete
+  (m ,) (multi lmet spc) 50 all-released ()  ;; m+, for Language Change
+  (d k) (caps-word 2000) 50 all-released ()  ;; d+k for Caps Word
 )
 
 (deflayer base
-  y u i o p
-  @lang @a @s @d @f h @j @k @l @;
-  n m @spc
+  q w e r t y u i o p
+  @lang @a @s @d @f g h @j @k @l @;
+  z x c v b n m , . /
+  @spc
 )
 
 (deflayer nav
-  ;; y    u     i   o    p
-     del  home  up  end  pgup
-  ;; caps  a  s  d  f  h     j     k     l      ;
-     _     _  _  _  _  bspc  left  down  right  pgdn
-  ;; n          m          spc
-     @ws-prev   @ws-next   _
+  ;; Row 1: Left hand (Q-R) pgup/home/up/end | Right hand (Y-P) del/home/up/end/pgup
+  pgup home up   end  t    del  home up   end  pgup
+
+  ;; Row 2: Left hand (A-F) pgdn/left/down/rght | Right hand (H-;) bspc/left/down/rght/pgdn
+  _    pgdn left down rght g    bspc left down rght pgdn
+
+  ;; Row 3: Bottom row macros (WinTab, Workspace Switch, AltTab)
+  _    @win-tab @ws-prev @ws-next @alt-tab @alt-tab @ws-prev @ws-next @win-tab _
+
+  ;; space
+  _
 )
