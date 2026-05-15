@@ -1,7 +1,7 @@
 (defcfg
   process-unmapped-keys yes
   ;; Device path for Ubuntu (verified from your system)
-  linux-dev /dev/input/event4
+  linux-dev /dev/input/event4 ;; comment out for wins
   concurrent-tap-hold yes
 )
 
@@ -13,15 +13,15 @@
 )
 
 (defvar
-  tap-time 150
+  tap-time 200
   hold-time 200
 )
 
 (defalias
-  ;; Language/Esc tap-hold (Tapping Caps acts as Alt+Shift, hold for Esc)
-  lang (tap-hold 100 100 esc (multi lalt lshift))
+  ;; Caps Lock: Tap for Esc, Hold for Alt+Shift
+  lang (tap-hold $tap-time $hold-time esc (multi lalt lshift))
 
-  ;; Home Row Mods (Left) - Using f24 to improve compatibility
+  ;; Home Row Mods (Left)
   a (multi f24 (tap-hold $tap-time $hold-time a lmet))
   s (multi f24 (tap-hold $tap-time $hold-time s lalt))
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
@@ -41,14 +41,17 @@
   ws-next (multi lmet lctl rght)
   win-tab (multi lmet tab)
   alt-tab (multi lalt tab)
+
+  ;; Language switch macro: Explicitly hold Alt and tap Space
+  lang-switch (macro (down lalt) 50 spc 50 (up lalt))
 )
 
-;; ZMK-style Combos (Chords)
+;; Reduced chord timeout to 45ms to avoid ghost combos while typing fast
 (defchordsv2
-  (e r) bspc 50 all-released ()              ;; e+r for Backspace
-  (u i) del 50 all-released ()               ;; u+i for Delete
-  (m ,) (multi lmet spc) 50 all-released ()  ;; m+, for Language Change
-  (d k) (caps-word 2000) 50 all-released ()  ;; d+k for Caps Word
+  (e r) bspc 45 all-released ()
+  (u i) del 45 all-released ()
+  (m ,) @lang-switch 45 all-released ()
+  (d k) (caps-word 2000) 45 all-released ()
 )
 
 (deflayer base
