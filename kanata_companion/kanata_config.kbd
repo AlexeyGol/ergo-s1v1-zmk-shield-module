@@ -12,28 +12,32 @@
   spc
 )
 
+;; Hand assignment for tap-hold-opposite-hand.
+;; Hold fires only when the NEXT key is on the opposite hand.
+(defhands
+  (left  q w e r t a s d f g z x c v b)
+  (right y u i o p h j k l ; n m , . /))
+
 (defvar
-  tap-time 150
-  hold-time 170
-  left-hand-keys  (q w e r t a s d f g z x c v b)
-  right-hand-keys (y u i o p h j k l ; n m , . /)
+  tap-time 200
+  hold-time 180
 )
 
 (defalias
   ;; Caps Lock: Tap for Esc, Hold for Alt+Shift
   lang (tap-hold $tap-time $hold-time esc (multi lalt lshift))
 
-  ;; Home Row Mods (Left) — hold only fires when a right-hand key is pressed
-  a (multi f24 (tap-hold-release-keys $tap-time $hold-time a lmet $right-hand-keys))
-  s (multi f24 (tap-hold-release-keys $tap-time $hold-time s lalt $right-hand-keys))
-  d (multi f24 (tap-hold-release-keys $tap-time $hold-time d lsft $right-hand-keys))
-  f (multi f24 (tap-hold-release-keys $tap-time $hold-time f lctl $right-hand-keys))
+  ;; Home Row Mods (Left) — opposite-hand gating eliminates same-hand roll misfires
+  a (multi f24 (tap-hold-opposite-hand $hold-time a lmet))
+  s (multi f24 (tap-hold-opposite-hand $hold-time s lalt))
+  d (multi f24 (tap-hold-opposite-hand $hold-time d lsft))
+  f (multi f24 (tap-hold-opposite-hand $hold-time f lctl))
 
-  ;; Home Row Mods (Right) — hold only fires when a left-hand key is pressed
-  j (multi f24 (tap-hold-release-keys $tap-time $hold-time j rctl $left-hand-keys))
-  k (multi f24 (tap-hold-release-keys $tap-time $hold-time k rsft $left-hand-keys))
-  l (multi f24 (tap-hold-release-keys $tap-time $hold-time l ralt $left-hand-keys))
-  ; (multi f24 (tap-hold-release-keys $tap-time $hold-time ;  rmet $left-hand-keys))
+  ;; Home Row Mods (Right)
+  j (multi f24 (tap-hold-opposite-hand $hold-time j rctl))
+  k (multi f24 (tap-hold-opposite-hand $hold-time k rsft))
+  l (multi f24 (tap-hold-opposite-hand $hold-time l ralt))
+  ; (multi f24 (tap-hold-opposite-hand $hold-time ;  rmet))
 
   ;; Space -> Navigation layer on hold
   spc (tap-hold $tap-time $hold-time spc (layer-while-held nav))
