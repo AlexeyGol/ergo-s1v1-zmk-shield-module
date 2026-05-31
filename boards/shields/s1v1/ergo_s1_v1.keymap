@@ -82,11 +82,11 @@
             tapping-term-ms = <300>;
             bindings = <&kp>, <&kp>;
         };
-    // Tap=BACKSLASH, double-tap=LEFT_BRACKET
+    // Tap=BACKSLASH, double-tap=LEFT_BRACKET ru x
         td_bslash: td_bslash {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&kp BACKSLASH>, <&kp LEFT_BRACKET>;
         };
     // Hold=RIGHT_BRACKET, tap/double-tap via td_bslash (0 is dummy for tap-dance's 0 binding cells)
