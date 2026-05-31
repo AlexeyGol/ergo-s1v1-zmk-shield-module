@@ -4,7 +4,8 @@
       "WebSearch",
       "WebFetch(domain:nicekeyboards.com)",
       "WebFetch(domain:zmk.dev)",
-      "WebFetch(domain:turkeyboards.com)"
+      "WebFetch(domain:turkeyboards.com)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
