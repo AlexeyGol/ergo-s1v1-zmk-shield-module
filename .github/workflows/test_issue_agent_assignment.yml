@@ -90,8 +90,14 @@ jobs:
           REPO="${GITHUB_REPOSITORY#*/}"
           NUM="${{ steps.issue.outputs.number }}"
 
-          # 1) Resolve the Copilot coding agent actor id (login: copilot-swe-agent)
-          COPILOT_ID=$(gh api graphql \
+          # 0) DIAGNOSTIC: confirm which identity this token maps to.
+          #    Expect your username (PAT). "github-actions[bot]" => the secret is
+          #    empty/missing and it fell back to the default token, which cannot
+          #    see Copilot.
+          echo "Token identity: $(gh api user --jq '.login' 2>&1 || echo '<user lookup failed>')"
+
+          # 1) Resolve the Copilot coding agent actor id.
+          ACTORS=$(gh api graphql \
             -H "GraphQL-Features: issues_copilot_assignment_api_support" \
             -f query='
               query($owner: String!, $repo: String!) {
@@ -101,11 +107,19 @@ jobs:
                   }
                 }
               }' \
-            -F owner="$OWNER" -F repo="$REPO" |
-            jq -r '.data.repository.suggestedActors.nodes[] | select(.login == "copilot-swe-agent") | .id')
+            -F owner="$OWNER" -F repo="$REPO")
+
+          # DIAGNOSTIC: dump every assignable actor so we can see the real logins.
+          echo "Assignable actors:"
+          echo "$ACTORS" | jq -r '.data.repository.suggestedActors.nodes[] | "  \(.login) [\(.__typename)] \(.id // "<no id>")"'
+
+          # Match the Copilot agent by login. It is normally "copilot-swe-agent";
+          # accept anything containing "copilot" as a fallback in case it differs.
+          COPILOT_ID=$(echo "$ACTORS" | jq -r '.data.repository.suggestedActors.nodes[]
+            | select(.login | test("copilot"; "i")) | .id' | head -n1)
 
           if [ -z "$COPILOT_ID" ]; then
-            echo "::error::Copilot is not available as an assignee. Confirm the Copilot coding agent is enabled."
+            echo "::error::Copilot is not an assignable actor for this repo/token. See the actor list and token identity logged above."
             exit 1
           fi
           echo "Resolved copilot-swe-agent ID: $COPILOT_ID"
