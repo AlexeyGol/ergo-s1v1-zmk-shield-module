@@ -42,7 +42,6 @@ jobs:
           URL=$(gh issue create \
             --title "Test: Copilot agent assignment smoke-test ($(date +%Y-%m-%d))" \
             --body-file issue-body.md \
-            # --label "test-security-auto" \
             --repo "${{ github.repository }}")
           echo "url=$URL" >> "$GITHUB_OUTPUT"
           echo "number=$(basename "$URL")" >> "$GITHUB_OUTPUT"
