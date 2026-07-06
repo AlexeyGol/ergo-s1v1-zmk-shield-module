@@ -1,3 +1,27 @@
+# Smoke test: create an issue in the pipeline and assign it to the Copilot coding agent.
+#
+# SETUP REQUIRED (one-time):
+#   The built-in GITHUB_TOKEN (and GitHub App tokens) CANNOT assign the Copilot
+#   coding agent — the assignment API deliberately rejects them, so
+#   `suggestedActors` returns no `copilot-swe-agent` and the assign step fails with
+#   "Copilot is not available as an assignee". You must use a user Personal Access
+#   Token (PAT) belonging to a user who has Copilot coding agent access on this repo.
+#
+#   1. Enable the Copilot coding agent: repo Settings > Copilot > Coding agent.
+#   2. Create a fine-grained PAT (github.com > Settings > Developer settings >
+#      Fine-grained tokens), scoped to THIS repository, with:
+#        - Repository permissions > Issues: Read and write
+#            (covers create / view / assign / close)
+#        - Repository permissions > Metadata: Read-only  (auto-required; used by the
+#            suggestedActors and issue-node-id GraphQL lookups)
+#      There is no "Copilot" scope — what matters is that it's a USER PAT and the
+#      user has Copilot access.
+#   3. Add the token as a repo secret named COPILOT_ASSIGN_PAT
+#      (Settings > Secrets and variables > Actions).
+#
+# Note: PATs are tied to a user and expire. Fine for a throwaway test; for a
+# permanent workflow prefer a GitHub App with a token-exchange step.
+
 name: Temporary Test Box
 
 on:
@@ -17,11 +41,14 @@ concurrency:
 
 env:
   MAX: 5
-  GH_TOKEN: ${{ github.token }}
 
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
+    env:
+      # Default token handles create / view / close (scoped by permissions: above).
+      # The PAT is added only on the assign step that needs it (see that step).
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Create test issue body
         run: |
@@ -39,6 +66,7 @@ jobs:
       - name: Create tracking issue
         id: issue
         run: |
+          #TBD - mb assign a label?b
           URL=$(gh issue create \
             --title "Test: Copilot agent assignment smoke-test ($(date +%Y-%m-%d))" \
             --body-file issue-body.md \
@@ -54,6 +82,9 @@ jobs:
           echo "Issue #$NUM title: $TITLE"
 
       - name: Assign the issue to Copilot (GraphQL)
+        env:
+          # User PAT — the Copilot assignment API rejects the default GITHUB_TOKEN.
+          GH_TOKEN: ${{ secrets.COPILOT_ASSIGN_PAT }}
         run: |
           OWNER="${{ github.repository_owner }}"
           REPO="${GITHUB_REPOSITORY#*/}"
