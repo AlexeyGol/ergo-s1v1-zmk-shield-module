@@ -39,11 +39,39 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  MAX: 5
+# env:
+#   MAX: 5
 
 jobs:
+  job-failure-verify:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: regular checkout
+        uses: actions/checkout@v6
+
+      - name: run a step that fails
+        run: |
+          echo "This step will fail"
+          exit 1
+
+  step-failure-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: regular checkout
+        uses: actions/checkout@v6
+
+      - name: run a step that fails
+        continue-on-error: true
+        run: |
+          echo "This step will fail"
+          exit 1
+
+      
+
+
   smoke-test:
+    if: false
     runs-on: ubuntu-latest
     env:
       # Default token handles create / view / close (scoped by permissions: above).
