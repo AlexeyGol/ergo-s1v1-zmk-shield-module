@@ -82,6 +82,8 @@
             tapping-term-ms = <300>;
             bindings = <&kp>, <&kp>;
         };
+
+    // workaround for ru x and ъ
     // Tap=BACKSLASH, double-tap=LEFT_BRACKET ru x
         td_bslash: td_bslash {
             compatible = "zmk,behavior-tap-dance";

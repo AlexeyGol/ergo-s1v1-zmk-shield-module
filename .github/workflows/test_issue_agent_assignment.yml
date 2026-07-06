@@ -1,0 +1,99 @@
+name: Temporary Test Box
+
+on:
+  push:
+    # branches-ignore:
+    #   - qa
+    #   - prod
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MAX: 5
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create tracking issue
+        id: issue
+        run: |
+          URL=$(gh issue create \
+            --title "Test: Copilot agent assignment smoke-test ($(date +%Y-%m-%d))" \
+            --body-file issue-body.md \
+            --label "test-security-auto" \
+            --repo "${{ github.repository }}")
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "number=$(basename "$URL")" >> "$GITHUB_OUTPUT"
+          echo "Created issue: $URL"
+
+      - name: Read back issue title
+        run: |
+          NUM="${{ steps.issue.outputs.number }}"
+          TITLE=$(gh issue view "$NUM" --repo "${{ github.repository }}" --json title --jq '.title')
+          echo "Issue #$NUM title: $TITLE"
+
+      - name: Assign the issue to Copilot (GraphQL)
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          NUM="${{ steps.issue.outputs.number }}"
+
+          # 1) Resolve the Copilot coding agent actor id (login: copilot-swe-agent)
+          COPILOT_ID=$(gh api graphql \
+            -H "GraphQL-Features: issues_copilot_assignment_api_support" \
+            -f query='
+              query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  suggestedActors(capabilities: [CAN_BE_ASSIGNED], first: 100) {
+                    nodes { login __typename ... on Bot { id } ... on User { id } }
+                  }
+                }
+              }' \
+            -F owner="$OWNER" -F repo="$REPO" |
+            jq -r '.data.repository.suggestedActors.nodes[] | select(.login == "copilot-swe-agent") | .id')
+
+          if [ -z "$COPILOT_ID" ]; then
+            echo "::error::Copilot is not available as an assignee. Confirm the Copilot coding agent is enabled."
+            exit 1
+          fi
+          echo "Resolved copilot-swe-agent ID: $COPILOT_ID"
+
+          # 2) Resolve the issue node id
+          ISSUE_ID=$(gh api graphql \
+            -f query='
+              query($owner: String!, $repo: String!, $num: Int!) {
+                repository(owner: $owner, name: $repo) { issue(number: $num) { id } }
+              }' \
+            -F owner="$OWNER" -F repo="$REPO" -F num="$NUM" |
+            jq -r '.data.repository.issue.id')
+          echo "Resolved issue node ID: $ISSUE_ID"
+
+          # 3) Assign Copilot -> triggers the coding agent
+          gh api graphql \
+            -H "GraphQL-Features: issues_copilot_assignment_api_support" \
+            -f query='
+              mutation($assignable: ID!, $actor: ID!) {
+                replaceActorsForAssignable(input: {assignableId: $assignable, actorIds: [$actor]}) {
+                  assignable { ... on Issue { number } }
+                }
+              }' \
+            -F assignable="$ISSUE_ID" -F actor="$COPILOT_ID"
+
+          echo "Assigned issue #$NUM to the Copilot coding agent."
+
+      - name: Close test issue
+        if: always() && steps.issue.outputs.number != ''
+        run: |
+          gh issue close "${{ steps.issue.outputs.number }}" \
+            --repo "${{ github.repository }}" \
+            --comment "Smoke-test complete. Closing automatically."
+          echo "Closed issue #${{ steps.issue.outputs.number }}"
