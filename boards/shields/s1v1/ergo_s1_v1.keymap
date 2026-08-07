@@ -162,7 +162,7 @@
     &kp LEFT_SHIFT &my_mt LC(Z) Z  &my_mt LC(Z) X  &my_mt LC(C) C   &my_mt LC(V) V           &kp B                                                                        &kp N               &kp M            &kp COMMA         &kp PERIOD   &kp SLASH       &kp RIGHT_SHIFT
                    &kp LCTRL       &kp LGUI        &kp LALT                                                                                                                                   &kp HOME         &kp END           &mkp RCLK      
                                                                                                                     &kp LG(TAB)   &kp PSCRN     &kp C_VOLUME_DOWN         &kp C_VOLUME_UP
-                                                                                                                                  &kp K         &kp PAGE_UP 
+                                                                                                                                  &kp C_PP      &kp PAGE_UP 
                                                                     &my_lt L_FKEYS LC(BSPC)  &my_lt L_NAV BACKSPACE &kp LG(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV SPACE  &my_lt L_NUM DEL 
             >;
         };
