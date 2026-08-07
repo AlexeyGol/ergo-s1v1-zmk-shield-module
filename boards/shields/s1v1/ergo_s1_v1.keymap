@@ -177,7 +177,7 @@
     &trans  &kp PG_DN  &kp LEFT     &kp DOWN    &kp RIGHT    &trans                                   &kp BACKSPACE      &kp LEFT          &kp DOWN     &kp RIGHT &kp PG_DN &trans
     &trans  &trans     &kp LG(TAB)  &win_desk_l &win_desk_r  &kp LA(TAB)                              &kp LA(TAB)        &win_desk_l       &win_desk_r  &kp LG(TAB) &trans  &trans
             &sl L_SYS  &trans       &trans                                                                                                 &trans       &trans  &trans
-                                                                          &trans  &trans              &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
+                                                                          &trans  &kp C_PP            &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
                                                                                   &trans              &kp C_MUTE                      
                                                 &trans       &trans       &trans  &trans              &trans             &trans            &trans       &trans
             >;
