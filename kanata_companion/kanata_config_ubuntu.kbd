@@ -1,6 +1,6 @@
 (defcfg
   process-unmapped-keys yes
-  ;; Match keyboard by name — ignored on Windows, stable across reboots on Linux
+  ;; Match keyboard by name — stable across reboots unlike /dev/input/eventN
   linux-dev-names-include "Apple Inc. Apple Internal Keyboard / Trackpad"
   concurrent-tap-hold yes
 )
@@ -28,16 +28,16 @@
   lang (tap-hold $tap-time $hold-time esc (multi lalt lshift))
 
   ;; Home Row Mods (Left) — opposite-hand gating eliminates same-hand roll misfires
-  a (multi f24 (tap-hold-opposite-hand $hold-time a lmet))
-  s (multi f24 (tap-hold-opposite-hand $hold-time s lalt))
-  d (multi f24 (tap-hold-opposite-hand $hold-time d lsft))
-  f (multi f24 (tap-hold-opposite-hand $hold-time f lctl))
+  a (tap-hold-opposite-hand $hold-time a lmet)
+  s (tap-hold-opposite-hand $hold-time s lalt)
+  d (tap-hold-opposite-hand $hold-time d lsft)
+  f (tap-hold-opposite-hand $hold-time f lctl)
 
   ;; Home Row Mods (Right)
-  j (multi f24 (tap-hold-opposite-hand $hold-time j rctl))
-  k (multi f24 (tap-hold-opposite-hand $hold-time k rsft))
-  l (multi f24 (tap-hold-opposite-hand $hold-time l ralt))
-  ; (multi f24 (tap-hold-opposite-hand $hold-time ;  rmet))
+  j (tap-hold-opposite-hand $hold-time j rctl)
+  k (tap-hold-opposite-hand $hold-time k rsft)
+  l (tap-hold-opposite-hand $hold-time l ralt)
+  ; (tap-hold-opposite-hand $hold-time ;  rmet)
 
   ;; Space -> Navigation layer on hold
   spc (tap-hold $tap-time $hold-time spc (layer-while-held nav))
