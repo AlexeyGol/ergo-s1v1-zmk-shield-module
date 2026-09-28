@@ -7,30 +7,35 @@ combos {
         key-positions = <0 11>;   // top-outer corners, both halves
         require-prior-idle-ms = <150>;
         bindings = <&mo L_SYS>; // L_SYS layer
+        layers = <L_BASE_WIN L_BASE_MAC>;
     };
 
     // caps locked word for constants
     combo_caps_word {
         key-positions = <36 47>; // left and right shifts
         bindings = <&caps_word>;
+        layers = <L_BASE_WIN L_BASE_MAC>;
     };
 
     // e r for backspace
     combo_backspace {
         key-positions = <15 16>;
         bindings = <&kp BSPC>;
+        layers = <L_BASE_WIN L_BASE_MAC>;
     };
 
     // u i for delete
     combo_delete {
         key-positions = <19 20>;
         bindings = <&kp DELETE>;
+        layers = <L_BASE_WIN L_BASE_MAC>;
     };
 
     // m , for language change
     combo_language {
         key-positions = <43 44>;
         bindings = <&kp LG(SPACE)>;
+        layers = <L_BASE_WIN L_BASE_MAC>;
     };
 
 };

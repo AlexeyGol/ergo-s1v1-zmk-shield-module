@@ -9,7 +9,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/mouse.h>
-#include <dt-bindings/zmk/bt.h>
 
 // Local files
 #include "keymap_bluetooth.dtsi"
@@ -185,7 +184,7 @@
     &kp GRAVE      &kp N1          &kp N2          &kp N3           &kp N4                   &kp N5                                                                       &kp N6              &kp N7           &kp N8            &kp N9       &kp N0          &kp MINUS
     &kp TAB        &kp Q           &kp W           &kp E            &kp R                    &kp T                                                                        &kp Y               &kp U            &kp I             &kp O        &kp P           &bslash_ht RIGHT_BRACKET 0
     &kp ESCAPE     &hml LGUI A     &hml LALT S     &hml LSHIFT D    &hml LCTRL F             &kp G                                                                        &kp H               &hmr RCTRL J     &hmr RSHFT K      &hmr RALT L  &hmr RGUI SEMI  &kp SINGLE_QUOTE
-    &kp LEFT_SHIFT &my_mt LC(Z) Z  &my_mt LC(Z) X  &my_mt LC(C) C   &my_mt LC(V) V           &kp B                                                                        &kp N               &kp M            &kp COMMA         &kp PERIOD   &kp SLASH       &kp RIGHT_SHIFT
+    &kp LEFT_SHIFT &my_mt LC(Z) Z  &my_mt LC(X) X  &my_mt LC(C) C   &my_mt LC(V) V           &kp B                                                                        &kp N               &kp M            &kp COMMA         &kp PERIOD   &kp SLASH       &kp RIGHT_SHIFT
                    &kp LCTRL       &kp LGUI        &kp LALT                                                                                                                                   &kp HOME         &kp END           &mkp RCLK      
                                                                                                                     &kp LG(TAB)   &kp PSCRN     &kp C_VOLUME_DOWN         &kp C_VOLUME_UP
                                                                                                                                   &kp C_PP      &kp PAGE_UP 
@@ -211,7 +210,7 @@
     &kp GRAVE      &kp N1          &kp N2          &kp N3           &kp N4                   &kp N5                                                                       &kp N6               &kp N7           &kp N8            &kp N9        &kp N0           &kp MINUS
     &kp TAB        &kp Q           &kp W           &kp E            &kp R                    &kp T                                                                        &kp Y                &kp U            &kp I             &kp O         &kp P            &bslash_ht RIGHT_BRACKET 0
     &kp ESCAPE     &hml LCTRL A    &hml LALT S     &hml LSHIFT D    &hml LGUI F              &kp G                                                                        &kp H                &hmr RGUI J      &hmr RSHFT K      &hmr RALT L   &hmr RCTRL SEMI  &kp SINGLE_QUOTE
-    &kp LEFT_SHIFT &my_mt LG(Z) Z  &my_mt LG(Z) X  &my_mt LG(C) C   &my_mt LG(V) V          &kp B                                                                        &kp N                &kp M            &kp COMMA         &kp PERIOD    &kp SLASH        &kp RIGHT_SHIFT
+    &kp LEFT_SHIFT &my_mt LG(Z) Z  &my_mt LG(X) X  &my_mt LG(C) C   &my_mt LG(V) V          &kp B                                                                        &kp N                &kp M            &kp COMMA         &kp PERIOD    &kp SLASH        &kp RIGHT_SHIFT
                    &kp LCTRL       &kp LALT        &kp LGUI                                                                                                                                    &kp HOME         &kp END           &mkp RCLK      
                                                                                                                     &kp LG(TAB)   &kp LG(LS(N4)) &kp C_VOLUME_DOWN        &kp C_VOLUME_UP
                                                                                                                                   &kp C_PP       &kp PAGE_UP 
@@ -242,9 +241,9 @@
             bindings = <
  //|       |          |            |           |            |       |       |      | |       |       |                  |                 |             |         |         |       |
     &trans  &trans     &trans       &trans      &trans       &trans                                   &trans             &trans            &trans       &trans    &trans    &trans
-    &trans  &kp PG_UP  &kp HOME     &kp UP      &kp END      &trans                                   &kp DEL            &kp HOME          &kp UP       &kp END   &kp PG_UP &trans
-    &trans  &kp PG_DN  &kp LEFT     &kp DOWN    &kp RIGHT    &trans                                   &kp BACKSPACE      &kp LEFT          &kp DOWN     &kp RIGHT &kp PG_DN &trans
-    &trans  &trans     &kp LG(TAB)  &mac_desk_l &mac_desk_r  &kp LG(TAB)                              &kp LG(TAB)        &mac_desk_l       &mac_desk_r  &kp LC(UP)  &trans  &trans
+    &trans  &kp PG_UP  &kp LG(LEFT)  &kp UP      &kp LG(RIGHT) &trans                                   &kp DEL            &kp LG(LEFT)      &kp UP       &kp LG(RIGHT) &kp PG_UP &trans
+    &trans  &kp PG_DN  &kp LEFT      &kp DOWN    &kp RIGHT     &trans                                   &kp BACKSPACE      &kp LEFT          &kp DOWN     &kp RIGHT     &kp PG_DN &trans
+    &trans  &trans     &kp LG(TAB)   &mac_desk_l &mac_desk_r   &kp LG(TAB)                              &kp LG(TAB)        &mac_desk_l       &mac_desk_r  &kp LC(UP)  &trans  &trans
             &sl L_SYS  &trans       &trans                                                                                                 &trans       &trans  &trans
                                                                           &trans  &kp C_PP            &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
                                                                                   &trans              &kp C_MUTE                      
