@@ -15,21 +15,27 @@
 #include "keymap_bluetooth.dtsi"
 
 
-// use &mo 1 for nav layer
-#define L_BASE   0 
-#define L_NAV    1
-#define L_NUM    2
-#define L_SYS    3 // on update - update combos file too
-#define L_FKEYS  4
+// Layer indices
+#define L_BASE_WIN  0
+#define L_BASE_MAC  1
+#define L_NAV_WIN   2
+#define L_NAV_MAC   3
+#define L_NUM       4
+#define L_SYS       5 // on update - update combos file too
+#define L_FKEYS     6
 
 / {
     #include "keymap_combos.dtsi"
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+        tri_layer_win {
+            if-layers = <L_NAV_WIN L_NUM>;
+            then-layer = <L_SYS>;
+        };
+        tri_layer_mac {
+            if-layers = <L_NAV_MAC L_NUM>;
+            then-layer = <L_SYS>;
         };
     };
 
@@ -128,6 +134,26 @@
             >;
         };
 
+    // macOS desktop switcher (Mission Control spaces)
+        // switch left
+        mac_desk_l: mac_desk_l {
+            compatible = "zmk,behavior-macro";
+            label = "MAC_WS_PREV";
+            #binding-cells = <0>;
+            bindings = <
+                &kp LC(LEFT)
+            >;
+        };
+        // switch right
+        mac_desk_r: mac_desk_r {
+            compatible = "zmk,behavior-macro";
+            label = "MAC_WS_NEXT";
+            #binding-cells = <0>;
+            bindings = <
+                &kp LC(RIGHT)
+            >;
+        };
+
 
     };
 
@@ -142,8 +168,8 @@
 // CALC - Calculator
 // PTSC
 
-        base {
-            display-name = "BASE";
+        base_win {
+            display-name = "WIN";
 
 // |   `   | 1     |   2   |   3     |   4    |   5       |                                      |   6       |   7     |   8   |   9   |   0   |  BSPC |  
 // |  TAB  | Q     |   W   |   E     |   R    |   T       |                                      |   Y       |   U     |   I   |   O   |   P   |  PIPE |
@@ -163,19 +189,62 @@
                    &kp LCTRL       &kp LGUI        &kp LALT                                                                                                                                   &kp HOME         &kp END           &mkp RCLK      
                                                                                                                     &kp LG(TAB)   &kp PSCRN     &kp C_VOLUME_DOWN         &kp C_VOLUME_UP
                                                                                                                                   &kp C_PP      &kp PAGE_UP 
-                                                                    &my_lt L_FKEYS LC(BSPC)  &my_lt L_NAV BACKSPACE &kp LG(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV SPACE  &my_lt L_NUM DEL 
+                                                                    &my_lt L_FKEYS LC(BSPC)  &my_lt L_NAV_WIN BACKSPACE &kp LG(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_WIN SPACE  &my_lt L_NUM DEL 
             >;
         };
 
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-        navigation_layer {
-            display-name = "L_NAV";
+        base_mac {
+            display-name = "MAC";
+
+// |   `   | 1      |   2   |   3     |   4    |   5       |                                      |   6        |   7     |   8   |   9    |   0    |  BSPC |  
+// |  TAB  | Q      |   W   |   E     |   R    |   T       |                                      |   Y        |   U     |   I   |   O    |   P    |  PIPE |
+// |  ESC  | A CTRL | S ALT | D SHIFT | F CMD  |   G       |                                      |   H CMD    | J SHIFT | K ALT | L CTRL |   ;    |  '    |
+// | SHIFT | Z      |   X   |   C     |   V    |   B       |                                      |   N        |   M     |   ,   |   .    |   /    | SHIFT | 
+//         | CTRL   | ALT   | CMD     |                                                                                  | SW27  |  SW26  | M RBC  | 
+//                                                          | APPSW |  SCRN |    | VOLD    | VOLU   
+//                                                                  |  PLAY |    | PG UP    
+//                                     | BSPC   | SPACE nav | SW33  |  SW34 |    | PG DOWN | ENTER | SPACE nav | DEL     |
+
+            bindings = <      
+ //|              |               |               |                |                        |         |                |        |    |                                   |                    |                |                 |             |                |
+    &kp GRAVE      &kp N1          &kp N2          &kp N3           &kp N4                   &kp N5                                                                       &kp N6               &kp N7           &kp N8            &kp N9        &kp N0           &kp MINUS
+    &kp TAB        &kp Q           &kp W           &kp E            &kp R                    &kp T                                                                        &kp Y                &kp U            &kp I             &kp O         &kp P            &bslash_ht RIGHT_BRACKET 0
+    &kp ESCAPE     &hml LCTRL A    &hml LALT S     &hml LSHIFT D    &hml LGUI F              &kp G                                                                        &kp H                &hmr RGUI J      &hmr RSHFT K      &hmr RALT L   &hmr RCTRL SEMI  &kp SINGLE_QUOTE
+    &kp LEFT_SHIFT &my_mt LG(Z) Z  &my_mt LG(Z) X  &my_mt LG(C) C   &my_mt LG(V) V          &kp B                                                                        &kp N                &kp M            &kp COMMA         &kp PERIOD    &kp SLASH        &kp RIGHT_SHIFT
+                   &kp LCTRL       &kp LALT        &kp LGUI                                                                                                                                    &kp HOME         &kp END           &mkp RCLK      
+                                                                                                                    &kp LG(TAB)   &kp LG(LS(N4)) &kp C_VOLUME_DOWN        &kp C_VOLUME_UP
+                                                                                                                                  &kp C_PP       &kp PAGE_UP 
+                                                                    &my_lt L_FKEYS LA(BSPC)  &my_lt L_NAV_MAC BACKSPACE &kp LG(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_MAC SPACE  &my_lt L_NUM DEL 
+            >;
+        };
+
+// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+        navigation_win {
+            display-name = "NAV_WIN";
             bindings = <
  //|       |          |            |           |            |       |       |      | |       |       |                  |                 |             |         |         |       |
     &trans  &trans     &trans       &trans      &trans       &trans                                   &trans             &trans            &trans       &trans    &trans    &trans
     &trans  &kp PG_UP  &kp HOME     &kp UP      &kp END      &trans                                   &kp DEL            &kp HOME          &kp UP       &kp END   &kp PG_UP &trans
     &trans  &kp PG_DN  &kp LEFT     &kp DOWN    &kp RIGHT    &trans                                   &kp BACKSPACE      &kp LEFT          &kp DOWN     &kp RIGHT &kp PG_DN &trans
     &trans  &trans     &kp LG(TAB)  &win_desk_l &win_desk_r  &kp LA(TAB)                              &kp LA(TAB)        &win_desk_l       &win_desk_r  &kp LG(TAB) &trans  &trans
+            &sl L_SYS  &trans       &trans                                                                                                 &trans       &trans  &trans
+                                                                          &trans  &kp C_PP            &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
+                                                                                  &trans              &kp C_MUTE                      
+                                                &trans       &trans       &trans  &trans              &trans             &trans            &trans       &trans
+            >;
+
+        };
+
+// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+        navigation_mac {
+            display-name = "NAV_MAC";
+            bindings = <
+ //|       |          |            |           |            |       |       |      | |       |       |                  |                 |             |         |         |       |
+    &trans  &trans     &trans       &trans      &trans       &trans                                   &trans             &trans            &trans       &trans    &trans    &trans
+    &trans  &kp PG_UP  &kp HOME     &kp UP      &kp END      &trans                                   &kp DEL            &kp HOME          &kp UP       &kp END   &kp PG_UP &trans
+    &trans  &kp PG_DN  &kp LEFT     &kp DOWN    &kp RIGHT    &trans                                   &kp BACKSPACE      &kp LEFT          &kp DOWN     &kp RIGHT &kp PG_DN &trans
+    &trans  &trans     &kp LG(TAB)  &mac_desk_l &mac_desk_r  &kp LG(TAB)                              &kp LG(TAB)        &mac_desk_l       &mac_desk_r  &kp LC(UP)  &trans  &trans
             &sl L_SYS  &trans       &trans                                                                                                 &trans       &trans  &trans
                                                                           &trans  &kp C_PP            &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
                                                                                   &trans              &kp C_MUTE                      
@@ -212,9 +281,9 @@
             bindings = <
  //|       |            |           |           |           |          |                 |      |    |    |               |       |       |       |       |       |       |
     &trans  &bt_ht 0 0   &bt_ht 1 1  &bt_ht 2 2  &bt_ht 3 3  &bt_ht 4 4                                                 &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans       &trans      &to L_BASE_WIN &trans   &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
     &trans  &trans       &trans      &trans      &trans      &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
-    &trans  &trans       &trans      &trans      &trans      &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
-    &trans  &trans       &trans      &trans      &trans      &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans       &trans      &trans      &trans      &trans                                                     &trans  &to L_BASE_MAC  &trans  &trans  &trans  &trans
             &sys_reset   &trans      &trans                                                                                     &trans  &trans  &sys_reset
                                                                         &bt BT_CLR   &bootloader           &bootloader  &trans
                                                                                      &out OUT_USB          &trans
