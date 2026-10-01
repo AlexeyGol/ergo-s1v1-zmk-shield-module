@@ -212,9 +212,9 @@
     &kp ESCAPE     &hml LCTRL A    &hml LALT S     &hml LSHIFT D    &hml LGUI F              &kp G                                                                        &kp H                &hmr RGUI J      &hmr RSHFT K      &hmr RALT L   &hmr RCTRL SEMI  &kp SINGLE_QUOTE
     &kp LEFT_SHIFT &my_mt LG(Z) Z  &my_mt LG(X) X  &my_mt LG(C) C   &my_mt LG(V) V          &kp B                                                                        &kp N                &kp M            &kp COMMA         &kp PERIOD    &kp SLASH        &kp RIGHT_SHIFT
                    &kp LCTRL       &kp LALT        &kp LGUI                                                                                                                                    &kp HOME         &kp END           &mkp RCLK      
-                                                                                                                    &kp LG(TAB)   &kp LG(LS(N4)) &kp C_VOLUME_DOWN        &kp C_VOLUME_UP
+                                                                                                                    &kp LG(TAB)   &kp LG(LS(X))&kp C_VOLUME_DOWN        &kp C_VOLUME_UP
                                                                                                                                   &kp C_PP       &kp PAGE_UP 
-                                                                    &my_lt L_FKEYS LA(BSPC)  &my_lt L_NAV_MAC BACKSPACE &kp LG(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_MAC SPACE  &my_lt L_NUM DEL 
+                                                                    &my_lt L_FKEYS LA(BSPC)  &my_lt L_NAV_MAC BACKSPACE &kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_MAC SPACE  &my_lt L_NUM DEL 
             >;
         };
 
