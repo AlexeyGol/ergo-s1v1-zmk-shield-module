@@ -278,15 +278,15 @@
             // Bluetooth - Tap   = force OUT_BLE + select profile N; Hold ≥3s = disconnect profile N
             display-name = "L_SYS";
             bindings = <
- //|       |            |           |           |           |          |                 |      |    |    |               |       |       |       |       |       |       |
-    &trans  &bt_ht 0 0   &bt_ht 1 1  &bt_ht 2 2  &bt_ht 3 3  &bt_ht 4 4                                                 &trans  &trans  &trans  &trans  &trans  &trans
-    &trans  &trans       &trans      &to L_BASE_WIN &trans   &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
-    &trans  &trans       &trans      &trans      &trans      &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
-    &trans  &trans       &trans      &trans      &trans      &trans                                                     &trans  &to L_BASE_MAC  &trans  &trans  &trans  &trans
-            &sys_reset   &trans      &trans                                                                                     &trans  &trans  &sys_reset
-                                                                        &bt BT_CLR   &bootloader           &bootloader  &trans
-                                                                                     &out OUT_USB          &trans
-                                                 &trans      &trans     &trans       &trans                &trans  &trans  &trans  &trans                                                                
+ //|       |            |               |           |           |          |                 |      |    |    |               |       |       |       |       |       |       |
+    &trans  &bt_ht 0 0   &bt_ht 1 1     &bt_ht 2 2  &bt_ht 3 3  &bt_ht 4 4                                                 &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans       &to L_BASE_WIN &trans       &trans   &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans       &trans         &trans      &trans      &trans                                                     &trans  &trans  &trans  &trans  &trans  &trans
+    &trans  &trans       &trans         &trans      &trans      &trans                                                     &trans  &to L_BASE_MAC  &trans  &trans  &trans  &trans
+            &sys_reset   &trans         &trans                                                                                     &trans  &trans  &sys_reset
+                                                                           &bt BT_CLR   &bootloader           &bootloader  &trans
+                                                                                        &out OUT_USB          &trans
+                                                    &trans      &trans     &trans       &trans                &trans  &trans  &trans  &trans                                                                
             >;
         };
 
