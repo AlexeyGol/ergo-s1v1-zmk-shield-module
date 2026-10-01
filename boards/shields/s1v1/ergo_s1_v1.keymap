@@ -214,7 +214,7 @@
                    &kp LCTRL       &kp LALT        &kp LGUI                                                                                                                                    &kp HOME         &kp END           &mkp RCLK      
                                                                                                                     &kp LG(TAB)   &kp LG(LS(X)) &kp C_VOLUME_DOWN        &kp C_VOLUME_UP
                                                                                                                                   &kp C_PP       &kp PAGE_UP 
-                                                                    &my_lt L_FKEYS LA(BSPC)  &my_lt L_NAV_MAC BACKSPACE &kp LC(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_MAC SPACE  &my_lt L_NUM DEL 
+                                                                    &my_lt L_FKEYS LA(BSPC)  &my_lt L_NAV_MAC BACKSPACE &kp GLOBE &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_MAC SPACE  &my_lt L_NUM DEL 
             >;
         };
 
