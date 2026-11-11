@@ -120,7 +120,7 @@
             label = "WS_PREV";
             #binding-cells = <0>;
             bindings = <
-                &kp LC(LG(LEFT))
+                &kp LC(RG(LEFT))
             >;
         };
         // switch right
@@ -129,7 +129,7 @@
             label = "WS_NEXT";
             #binding-cells = <0>;
             bindings = <
-                &kp LC(LG(RIGHT))
+                &kp LC(RG(RIGHT))
             >;
         };
 
@@ -186,7 +186,7 @@
     &kp ESCAPE     &hml LGUI A     &hml LALT S     &hml LSHIFT D    &hml LCTRL F             &kp G                                                                        &kp H               &hmr RCTRL J     &hmr RSHFT K      &hmr RALT L  &hmr RGUI SEMI  &kp SINGLE_QUOTE
     &kp LEFT_SHIFT &my_mt LC(Z) Z  &my_mt LC(X) X  &my_mt LC(C) C   &my_mt LC(V) V           &kp B                                                                        &kp N               &kp M            &kp COMMA         &kp PERIOD   &kp SLASH       &kp RIGHT_SHIFT
                    &kp LCTRL       &kp LGUI        &kp LALT                                                                                                                                   &kp HOME         &kp END           &mkp RCLK      
-                                                                                                                    &kp LG(TAB)   &kp PSCRN     &kp C_VOLUME_DOWN         &kp C_VOLUME_UP
+                                                                                                                    &kp RG(TAB)   &kp PSCRN     &kp C_VOLUME_DOWN         &kp C_VOLUME_UP
                                                                                                                                   &kp C_PP      &kp PAGE_UP 
                                                                     &my_lt L_FKEYS LC(BSPC)  &my_lt L_NAV_WIN BACKSPACE &kp LG(SPACE) &kp C_AL_CALC &kp PAGE_DOWN &kp RETURN  &my_lt L_NAV_WIN SPACE  &my_lt L_NUM DEL 
             >;
@@ -226,7 +226,7 @@
     &trans  &trans     &trans       &trans      &trans       &trans                                   &trans             &trans            &trans       &trans    &trans    &trans
     &trans  &kp PG_UP  &kp HOME     &kp UP      &kp END      &trans                                   &kp DEL            &kp HOME          &kp UP       &kp END   &kp PG_UP &trans
     &trans  &kp PG_DN  &kp LEFT     &kp DOWN    &kp RIGHT    &trans                                   &kp BACKSPACE      &kp LEFT          &kp DOWN     &kp RIGHT &kp PG_DN &trans
-    &trans  &trans     &kp LG(TAB)  &win_desk_l &win_desk_r  &kp LA(TAB)                              &kp LA(TAB)        &win_desk_l       &win_desk_r  &kp LG(TAB) &trans  &trans
+    &trans  &trans     &kp RG(TAB)  &win_desk_l &win_desk_r  &kp LA(TAB)                              &kp LA(TAB)        &win_desk_l       &win_desk_r  &kp RG(TAB) &trans  &trans
             &sl L_SYS  &trans       &trans                                                                                                 &trans       &trans  &trans
                                                                           &trans  &kp C_PP            &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
                                                                                   &trans              &kp C_MUTE                      
